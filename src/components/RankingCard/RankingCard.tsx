@@ -11,7 +11,7 @@ interface RestaurantProps {
   data: (id:number) => void
 }
 
-const NoteCard = ({ list, data }: RestaurantProps, ) => {
+const RankingCard = ({ list, data }: RestaurantProps, ) => {
   const { id, storeName, menu, recommend, ranking, sido, sigungu} = list;
 
   // const func:any = () => {  //내용 줄임표용
@@ -39,11 +39,11 @@ const NoteCard = ({ list, data }: RestaurantProps, ) => {
               {ranking == 1 ? <PiNumberOneFill color="red" size="22px"/> : 
               ranking == 2 ? <PiNumberTwoFill color="green" size="22px"/> :  
               ranking == 3 ? <PiNumberThreeFill color="#c7058a" size="22px"/> : 
-              ranking == 4 ? <PiNumberFourFill  size="22px"/> : 
-              ranking == 5 ? <PiNumberFiveFill  size="22px"/> : 
-              ranking == 6 ? <PiNumberSixFill  size="22px"/> : 
-              ranking == 7 ? <PiNumberSevenFill  size="22px"/> : 
-              ""}  
+              // ranking == 4 ? <PiNumberFourFill  size="22px"/> : 
+              // ranking == 5 ? <PiNumberFiveFill  size="22px"/> : 
+              // ranking == 6 ? <PiNumberSixFill  size="22px"/> : 
+              // ranking == 7 ? <PiNumberSevenFill  size="22px"/> : 
+              ranking + "."}  
              </div>
             {" "}
             {storeName.length > 20 ? storeName.slice(0, 20) + '...' : storeName}  
@@ -71,4 +71,4 @@ const NoteCard = ({ list, data }: RestaurantProps, ) => {
   )
 }
 
-export default NoteCard
+export default RankingCard
