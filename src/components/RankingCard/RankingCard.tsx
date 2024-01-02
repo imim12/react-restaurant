@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Card, MenuBox, TopBox } from './RankingCard.styles';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { Restaurant } from '../../types/restaurant';
 import {  AiOutlineStar, AiFillStar } from 'react-icons/ai'
 import {PiNumberOneFill ,PiNumberTwoFill ,PiNumberThreeFill, PiNumberFourFill,PiNumberFiveFill, PiNumberSixFill , PiNumberSevenFill ,  PiNumberEightFill   } from "react-icons/pi";
+import { modalState } from '../../store/modal/restaurantModalSlice';
 
 interface RestaurantProps {
   list: Restaurant,
-  type: string
+  data: (id:number) => void
 }
 
-const NoteCard = ({ list, type }: RestaurantProps) => {
-  const { storeName, menu, recommend, ranking, sido, sigungu} = list;
+const NoteCard = ({ list, data }: RestaurantProps, ) => {
+  const { id, storeName, menu, recommend, ranking, sido, sigungu} = list;
 
   // const func:any = () => {  //내용 줄임표용
   //     if(introduction){
@@ -18,9 +20,18 @@ const NoteCard = ({ list, type }: RestaurantProps) => {
   //     }
   // }
 
+	const dispatch = useAppDispatch()
+
+  const openModal = (id:number) => {
+    data(id);  //콜백
+		dispatch(modalState(true))
+	}
+
   return (
     <>
-      <Card>
+    
+      <Card onClick={()=>{id && openModal(id)}}>
+      {/* <Card onClick={()=>{console.log("saddsa")}}> */}
         <TopBox>
           <div className='title'>
             <div className='icon'>
